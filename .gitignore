@@ -1,0 +1,9 @@
+# Godot 4+ specific ignores
+.godot/
+
+export_presets
+gamCA67.tmp
+pla156C.tmp
+plaFFD1.tmp
+tile_map.png.import
+triathlon.png.import

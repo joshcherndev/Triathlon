@@ -1,0 +1,137 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqo463ahfd7qy"]
+
+[ext_resource type="Script" path="res://UI/scenes/level_transition.gd" id="1_gdd2p"]
+
+[sub_resource type="Animation" id="Animation_1hitf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 144)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(256, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_aw6vs"]
+resource_name = "hide_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -144), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mwibj"]
+resource_name = "hide_left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(256, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xgg2h"]
+resource_name = "show_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 144)]
+}
+
+[sub_resource type="Animation" id="Animation_ihyxu"]
+resource_name = "show_right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-256, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m8hhf"]
+_data = {
+"RESET": SubResource("Animation_1hitf"),
+"hide_down": SubResource("Animation_aw6vs"),
+"hide_left": SubResource("Animation_mwibj"),
+"show_down": SubResource("Animation_xgg2h"),
+"show_right": SubResource("Animation_ihyxu")
+}
+
+[node name="LevelTransition" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_gdd2p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m8hhf")
+}
+autoplay = "RESET"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 144.0
+offset_right = 256.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

@@ -1,0 +1,430 @@
+[gd_scene load_steps=27 format=3 uid="uid://cqtaxj4d6p3j5"]
+
+[ext_resource type="Script" path="res://levels/scripts/level.gd" id="1_as7gj"]
+[ext_resource type="Shader" uid="uid://cnavtd7crb1se" path="res://UI/assets/scrolling_background.tres" id="1_rwdbt"]
+[ext_resource type="Texture2D" uid="uid://qycx0cuf3iuk" path="res://UI/assets/background_tile.png" id="2_rs31u"]
+[ext_resource type="PackedScene" uid="uid://gejm6wi7uxpm" path="res://player/player.tscn" id="3_u5c52"]
+[ext_resource type="TileSet" uid="uid://bhnslh5hhkdbu" path="res://tilemap/tile_map.tres" id="4_iffr2"]
+[ext_resource type="Texture2D" uid="uid://c6jxfxd4xdo6v" path="res://UI/assets/replay_button_normal.png" id="7_arc3k"]
+[ext_resource type="Texture2D" uid="uid://b1gt1vekwdbq2" path="res://UI/assets/replay_button_hover.png" id="8_0qkfo"]
+[ext_resource type="Texture2D" uid="uid://g71t4w6mwq7p" path="res://UI/assets/menu_button_normal.png" id="9_1nwjo"]
+[ext_resource type="Texture2D" uid="uid://copy8gwbhk6bn" path="res://UI/assets/menu_button_hover.png" id="10_gir0q"]
+[ext_resource type="Texture2D" uid="uid://bbjabsk2xm423" path="res://UI/assets/continue_button_normal.png" id="11_20k4u"]
+[ext_resource type="Texture2D" uid="uid://jdmhejbytxqb" path="res://UI/assets/continue_button_hover.png" id="12_75e1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3haj"]
+shader = ExtResource("1_rwdbt")
+shader_parameter/speed = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_0axqf"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6t424"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i8vgu"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_bdh2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(68, 68)]
+}
+
+[sub_resource type="Animation" id="Animation_756um"]
+resource_name = "hover"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(68, 40), Vector2(68, 38), Vector2(68, 42)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7ecx"]
+_data = {
+"RESET": SubResource("Animation_bdh2x"),
+"hover": SubResource("Animation_756um")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_iq6hm"]
+font_size = 8
+font_color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk8y3"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_cuoi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(104, 56)]
+}
+
+[sub_resource type="Animation" id="Animation_gfecs"]
+resource_name = "side_to_side"
+length = 2.0
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 1, 1.025),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(104, 56), Vector2(106, 56), Vector2(104, 56), Vector2(102, 56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2g1j"]
+_data = {
+"RESET": SubResource("Animation_cuoi4"),
+"side_to_side": SubResource("Animation_gfecs")
+}
+
+[sub_resource type="Animation" id="Animation_oqnfd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartTimeBackground/CenterContainer/StartTimeLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartTimeBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fumf6"]
+resource_name = "countdown"
+length = 3.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StartTimeBackground/CenterContainer/StartTimeLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/StartTimeBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw8vv"]
+_data = {
+"RESET": SubResource("Animation_oqnfd"),
+"countdown": SubResource("Animation_fumf6")
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_as7gj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_y3haj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 256.0
+offset_bottom = 144.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rs31u")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("3_u5c52")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_iffr2")
+format = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="EndOfLevelMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/EndOfLevelMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.737255)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/EndOfLevelMenu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 32
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer"]
+layout_mode = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="EndTimeLabel" type="Label" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Time: 0.0"
+label_settings = SubResource("LabelSettings_0axqf")
+
+[node name="BestTimeLabel" type="Label" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Attempts: 3"
+label_settings = SubResource("LabelSettings_6t424")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="ReplayButton" type="TextureButton" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_arc3k")
+texture_pressed = ExtResource("7_arc3k")
+texture_hover = ExtResource("8_0qkfo")
+texture_focused = ExtResource("8_0qkfo")
+
+[node name="MenuButton" type="TextureButton" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("9_1nwjo")
+texture_pressed = ExtResource("9_1nwjo")
+texture_hover = ExtResource("10_gir0q")
+texture_focused = ExtResource("10_gir0q")
+
+[node name="NextButton" type="TextureButton" parent="CanvasLayer/EndOfLevelMenu/Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("11_20k4u")
+texture_pressed = ExtResource("11_20k4u")
+texture_hover = ExtResource("12_75e1q")
+texture_focused = ExtResource("12_75e1q")
+
+[node name="Label" type="Label" parent="CanvasLayer/EndOfLevelMenu/Background"]
+layout_mode = 2
+offset_left = 68.0
+offset_top = 68.0
+offset_right = 188.0
+offset_bottom = 76.0004
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_i8vgu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/EndOfLevelMenu/Background"]
+libraries = {
+"": SubResource("AnimationLibrary_a7ecx")
+}
+autoplay = "hover"
+
+[node name="TimeLabelRoot" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_right = 256.0
+offset_bottom = 16.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+size_flags_vertical = 0
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/TimeLabelRoot"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0.00"
+label_settings = SubResource("LabelSettings_iq6hm")
+
+[node name="StartTimeBackground" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.737255)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/StartTimeBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartTimeLabel" type="Label" parent="CanvasLayer/StartTimeBackground/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3"
+
+[node name="PauseMenu" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.737255)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 88
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 88
+theme_override_constants/margin_bottom = 48
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PauseMenu/Background/MarginContainer"]
+layout_mode = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PauseMenu/Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PauseMenu/Background/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="PauseReplayButton" type="TextureButton" parent="CanvasLayer/PauseMenu/Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_arc3k")
+texture_pressed = ExtResource("7_arc3k")
+texture_hover = ExtResource("8_0qkfo")
+texture_focused = ExtResource("8_0qkfo")
+
+[node name="PauseMenuButton" type="TextureButton" parent="CanvasLayer/PauseMenu/Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("9_1nwjo")
+texture_pressed = ExtResource("9_1nwjo")
+texture_hover = ExtResource("10_gir0q")
+texture_focused = ExtResource("10_gir0q")
+
+[node name="Label" type="Label" parent="CanvasLayer/PauseMenu/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_vk8y3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PauseMenu"]
+libraries = {
+"": SubResource("AnimationLibrary_h2g1j")
+}
+autoplay = "side_to_side"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_pw8vv")
+}

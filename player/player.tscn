@@ -1,0 +1,186 @@
+[gd_scene load_steps=24 format=3 uid="uid://gejm6wi7uxpm"]
+
+[ext_resource type="Texture2D" uid="uid://vnnqhmbd6ab6" path="res://tile_map.png" id="1_6jlf2"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_ey1e6"]
+[ext_resource type="Script" path="res://player/move_component.gd" id="2_qb2n6"]
+[ext_resource type="Script" path="res://player/InteractableManager.gd" id="4_em6p3"]
+[ext_resource type="Texture2D" uid="uid://dmvtp8liy2ya4" path="res://assets/square_particle.png" id="5_b8yui"]
+[ext_resource type="Texture2D" uid="uid://brkm2do4t78f3" path="res://assets/feather_particle.png" id="6_3kpyn"]
+[ext_resource type="Texture2D" uid="uid://ydvhlbn85kp6" path="res://assets/circle_particle.png" id="7_q2vcq"]
+[ext_resource type="AudioStream" uid="uid://bojsj5x2vjnjm" path="res://SFX/square_landing.wav" id="8_pqqvx"]
+[ext_resource type="AudioStream" uid="uid://c5shacev12gdq" path="res://SFX/triangle_jump.wav" id="9_rexe6"]
+[ext_resource type="AudioStream" uid="uid://c123wuu1b1rnv" path="res://SFX/circle_speed.wav" id="10_5l0cp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e5pxg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gm3u4"]
+atlas = ExtResource("1_6jlf2")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j63uu"]
+atlas = ExtResource("1_6jlf2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkpx3"]
+atlas = ExtResource("1_6jlf2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vid1w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gm3u4")
+}],
+"loop": true,
+"name": &"circle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j63uu")
+}],
+"loop": true,
+"name": &"square",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkpx3")
+}],
+"loop": true,
+"name": &"triangle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ko2i"]
+size = Vector2(7, 7)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0d6vp"]
+radius = 3.45
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cew8n"]
+radius = 4.02823
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i3qo6"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+flatness = 0.5
+initial_velocity_min = 35.0
+initial_velocity_max = 35.0
+gravity = Vector3(0, 76, 0)
+scale_min = 0.25
+scale_max = 0.5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_200u1"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 5, 0)
+angle_min = -45.0
+angle_max = 45.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 10, 0)
+scale_min = 0.75
+
+[sub_resource type="Gradient" id="Gradient_a52qf"]
+offsets = PackedFloat32Array(0, 0.343137, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0.647059, 0.647059, 0.647059, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mhab8"]
+gradient = SubResource("Gradient_a52qf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x34aq"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_mhab8")
+
+[node name="Player" type="RigidBody2D"]
+z_index = 1
+collision_layer = 2
+mass = 5.0
+physics_material_override = SubResource("PhysicsMaterial_e5pxg")
+max_contacts_reported = 4
+script = ExtResource("1_ey1e6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_vid1w")
+animation = &"circle"
+autoplay = "square"
+
+[node name="SquareCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_8ko2i")
+
+[node name="TriangleCollisionShape" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-1, -3, -4, 3.99894, 3, 3.99894, 0, -3)
+disabled = true
+
+[node name="CircleCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.501697, 0.507918)
+shape = SubResource("CircleShape2D_0d6vp")
+disabled = true
+
+[node name="MoveComponent" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_qb2n6")
+
+[node name="InteractableManager" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_em6p3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableManager"]
+position = Vector2(-0.5, 0.45)
+shape = SubResource("CircleShape2D_cew8n")
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="SquareParticles" type="GPUParticles2D" parent="Particles"]
+z_index = 2
+position = Vector2(0, 3.42188)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_i3qo6")
+texture = ExtResource("5_b8yui")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="FeatherParticles" type="GPUParticles2D" parent="Particles"]
+z_index = 2
+emitting = false
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_200u1")
+texture = ExtResource("6_3kpyn")
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+
+[node name="CircleParticles" type="GPUParticles2D" parent="Particles"]
+position = Vector2(-0.5, 0.507918)
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_x34aq")
+texture = ExtResource("7_q2vcq")
+lifetime = 0.5
+visibility_rect = Rect2(-150, -100, 300, 200)
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="SquareLandedSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("8_pqqvx")
+
+[node name="TriangleJumpSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("9_rexe6")
+
+[node name="CircleSpeedSFX" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("10_5l0cp")

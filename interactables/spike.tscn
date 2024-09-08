@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b4jebucg57tci"]
+
+[ext_resource type="PackedScene" uid="uid://c7byvphcxc26o" path="res://interactables/interactable.tscn" id="1_trlnk"]
+[ext_resource type="Texture2D" uid="uid://vnnqhmbd6ab6" path="res://tile_map.png" id="2_h1bt0"]
+[ext_resource type="AudioStream" uid="uid://xdqkc8umtuju" path="res://SFX/spike.wav" id="3_kay2q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j6nh"]
+atlas = ExtResource("2_h1bt0")
+region = Rect2(32, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ot8ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7j6nh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1m5o"]
+size = Vector2(5, 4)
+
+[node name="Spike" instance=ExtResource("1_trlnk")]
+collision_mask = 2
+interactable_type = 5
+direction = 0
+
+[node name="AnimatedSprite2d" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ot8ko")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_b1m5o")
+
+[node name="SoundEffect" parent="." index="2"]
+stream = ExtResource("3_kay2q")
+volume_db = 7.0

@@ -1,0 +1,562 @@
+[gd_scene load_steps=26 format=3 uid="uid://dhitdr64b8vhw"]
+
+[ext_resource type="PackedScene" uid="uid://cqtaxj4d6p3j5" path="res://levels/level.tscn" id="1_nm2ly"]
+[ext_resource type="PackedScene" uid="uid://l6rlup74102o" path="res://levels/level_11.tscn" id="2_1v6rd"]
+[ext_resource type="Script" path="res://interactables/fan.gd" id="3_5tklx"]
+[ext_resource type="Texture2D" uid="uid://3h0xfd1b6c77" path="res://assets/fan.png" id="3_scpiu"]
+[ext_resource type="Texture2D" uid="uid://dyl1wp5bvg0wf" path="res://assets/fan_wind.png" id="4_8j3j2"]
+[ext_resource type="PackedScene" uid="uid://b4jebucg57tci" path="res://interactables/spike.tscn" id="5_w8gd6"]
+[ext_resource type="PackedScene" uid="uid://cglstqclnsyqx" path="res://interactables/end_of_level_flag.tscn" id="6_2acuh"]
+[ext_resource type="AudioStream" uid="uid://88kawsaoxnu8" path="res://SFX/fan_spin.wav" id="6_3q6n2"]
+[ext_resource type="PackedScene" uid="uid://b0xrq2gaw2bg5" path="res://interactables/door_and_switch.tscn" id="7_lwrj0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23m66"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvw0h"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mrwu"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2p7d"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6or2"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_neyv3"]
+atlas = ExtResource("3_scpiu")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1uhqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23m66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvw0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mrwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2p7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6or2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neyv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqy0e"]
+size = Vector2(8, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4wwb"]
+atlas = ExtResource("4_8j3j2")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5bih"]
+atlas = ExtResource("4_8j3j2")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3hb1"]
+atlas = ExtResource("4_8j3j2")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm1du"]
+atlas = ExtResource("4_8j3j2")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glslw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4wwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5bih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3hb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm1du")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iturc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23m66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvw0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mrwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2p7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6or2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_neyv3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8rjk"]
+size = Vector2(8, 88)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvmw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4wwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5bih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3hb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm1du")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Level10" instance=ExtResource("1_nm2ly")]
+next_level = ExtResource("2_1v6rd")
+level_number = "10"
+player_shape = 1
+
+[node name="Player" parent="." index="1"]
+position = Vector2(21, 102)
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(0, 196609, 1, 65536, 196609, 1, 131072, 196609, 1, 196608, 196609, 1, 262144, 196609, 1, 327680, 196609, 1, 393216, 196609, 1, 458752, 196609, 1, 524288, 196609, 1, 589824, 196609, 1, 655360, 196609, 1, 720896, 196609, 1, 786432, 196609, 1, 851968, 196609, 1, 917504, 196609, 1, 983040, 196609, 1, 1048576, 196609, 1, 1114112, 196609, 1, 1114113, 196609, 1, 1114114, 196609, 1, 1114115, 196609, 1, 1114116, 196609, 1, 1114117, 196609, 1, 1114118, 196609, 1, 1114119, 196609, 1, 1114120, 196609, 1, 1114121, 196609, 1, 1114122, 196609, 1, 1114123, 196609, 1, 1114124, 196609, 1, 1114125, 196609, 1, 1114126, 196609, 1, 1114127, 196609, 1, 1114128, 196609, 1, 1114129, 196609, 1, 1114130, 196609, 1, 1114131, 196609, 1, 1114132, 196609, 1, 1114133, 196609, 1, 1114134, 196609, 1, 1114135, 196609, 1, 1114136, 196609, 1, 1114137, 196609, 1, 1114138, 196609, 1, 1114139, 196609, 1, 1114140, 196609, 1, 1114141, 196609, 1, 1114142, 196609, 1, 1114143, 196609, 1, 1048607, 196609, 1, 983071, 196609, 1, 917535, 196609, 1, 851999, 196609, 1, 786463, 196609, 1, 720927, 196609, 1, 655391, 196609, 1, 589855, 196609, 1, 524319, 196609, 1, 458783, 196609, 1, 393247, 196609, 1, 327711, 196609, 1, 262175, 196609, 1, 196639, 196609, 1, 131103, 196609, 1, 65567, 196609, 1, 31, 196609, 1, 30, 196609, 1, 29, 196609, 1, 28, 196609, 1, 27, 196609, 1, 26, 196609, 1, 25, 196609, 1, 24, 196609, 1, 23, 196609, 1, 22, 196609, 1, 21, 196609, 1, 20, 196609, 1, 19, 196609, 1, 18, 196609, 1, 17, 196609, 1, 16, 196609, 1, 15, 196609, 1, 14, 196609, 1, 13, 196609, 1, 12, 196609, 1, 11, 196609, 1, 10, 196609, 1, 9, 196609, 1, 8, 196609, 1, 7, 196609, 1, 6, 196609, 1, 5, 196609, 1, 4, 196609, 1, 3, 196609, 1, 2, 196609, 1, 1, 196609, 1, 65551, 196609, 1, 65552, 196609, 1, 131089, 196609, 1, 131086, 196609, 1, 196623, 196609, 1, 196624, 196609, 1, 131085, 458753, 2, 131090, 393217, 2, 393230, 196609, 1, 393229, 458753, 2, 393233, 196609, 1, 393234, 393217, 2, 524302, 196609, 1, 524301, 458753, 2, 983055, 196609, 1, 983056, 196609, 1, 655374, 196609, 1, 655373, 458753, 2, 786446, 196609, 1, 786445, 458753, 2, 917518, 196609, 1, 917517, 458753, 2, 1048590, 196609, 1, 1048589, 458753, 2, 524305, 196609, 1, 524306, 393217, 2, 655377, 196609, 1, 655378, 393217, 2, 786449, 196609, 1, 786450, 196609, 1, 917521, 196609, 1, 917522, 393217, 2, 1048593, 196609, 1, 1048594, 393217, 2, 983057, 393217, 3, 851985, 393217, 3, 720913, 393217, 3, 589841, 393217, 3, 458769, 393217, 3, 196625, 393217, 3, 65553, 393217, 3, 983054, 458753, 3, 851982, 458753, 3, 720910, 458753, 3, 589838, 458753, 3, 458766, 458753, 3, 196622, 458753, 3, 65550, 458753, 3, 131084, 393217, 2, 131091, 458753, 2, 131083, 196609, 1, 196616, 458753, 3, 131082, 196609, 1, 131081, 458753, 3, 196617, 393217, 2, 458761, 458753, 2, 393224, 458753, 2, 393225, 393217, 3, 458762, 196609, 1, 458763, 393217, 2, 524296, 458753, 2, 524297, 393217, 3, 589833, 458753, 2, 589834, 196609, 1, 589835, 393217, 2, 720906, 196609, 1, 720905, 458753, 2, 655368, 458753, 2, 655369, 393217, 3, 458760, 458753, 3, 589832, 458753, 3, 720907, 196609, 1, 720908, 393217, 2, 851981, 393217, 2, 851980, 196609, 1, 851979, 196609, 1, 851978, 458753, 2, 786441, 458753, 2, 786442, 393217, 3, 131092, 196609, 1, 131093, 196609, 1, 131094, 393217, 3, 196631, 393217, 3, 196630, 458753, 2, 262167, 196609, 1, 327703, 196609, 1, 458773, 196609, 1, 458772, 458753, 2, 458774, 393217, 2, 393239, 393217, 2, 393238, 458753, 3, 458775, 393217, 3, 524311, 393217, 2, 589846, 393217, 2, 524310, 458753, 3, 589845, 196609, 1, 720917, 196609, 1, 720916, 458753, 2, 589844, 458753, 2, 851987, 458753, 2, 851988, 196609, 1, 851989, 196609, 1, 786454, 458753, 3, 65542, 393217, 2, 65541, 196609, 1, 131077, 196609, 1, 196613, 196609, 1, 262149, 393217, 2, 327684, 196609, 1, 393220, 393217, 2, 589828, 458753, 2, 589829, 393217, 2, 131076, 196609, 1, 196612, 196609, 1, 262148, 196609, 1, 327683, 458753, 3, 393219, 196609, 1, 589827, 393217, 2, 655363, 393217, 3, 720899, 196609, 1, 786435, 196609, 1, 65540, 196609, 1, 851971, 196609, 1, 917507, 196609, 1, 983043, 196609, 1, 1048579, 196609, 1, 458755, 458753, 2, 65539, 458753, 2, 393231, 196609, 1, 524304, 196609, 1, 655375, 196609, 1, 786448, 196609, 1, 65549, 262145, 3, 65548, 262145, 3, 65547, 262145, 3, 65554, 262145, 3, 65555, 262145, 3, 65556, 262145, 3, 65561, 196609, 1, 131097, 196609, 1, 196633, 196609, 1, 262169, 196609, 1, 327705, 196609, 1, 393241, 196609, 1, 458777, 458753, 2, 720919, 196609, 1, 720918, 196609, 1, 65563, 393217, 2, 196634, 196609, 1, 262170, 196609, 1, 327706, 196609, 1, 393242, 393217, 2, 65562, 196609, 1, 131098, 196609, 1, 65560, 458753, 2, 720922, 458753, 2, 786459, 458753, 2, 851996, 458753, 2, 851997, 196609, 1, 851998, 196609, 1, 720924, 393217, 3, 786461, 393217, 3, 917534, 458753, 2, 786460, 196609, 1, 720923, 196609, 1, 327707, 196609, 1, 327708, 393217, 2, 655364, 458753, 3, 786436, 196609, 1, 917508, 196609, 1, 720900, 196609, 1, 851972, 196609, 1, 983044, 196609, 1, 1048580, 196609, 1, 1048581, 393217, 3, 589826, 458753, 2, 851990, 393217, 2, 786455, 393217, 2, 720920, 393217, 2, 786451, 393217, 2, 1048578, 458753, 3)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 136, 248, 136, 248, 8, 8, 8, 8, 0, 256, 0, 256, 144, 0, 144)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" index="1"]
+polygon = PackedVector2Array(16, 72, 24, 80, 24, 128, 16, 136, 48, 136, 40, 128, 40, 80, 48, 72)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" index="2"]
+polygon = PackedVector2Array(32, 64, 24, 56, 24, 48, 32, 40, 32, 16, 24, 8, 56, 8, 48, 16, 48, 32, 40, 40, 40, 48, 32, 56)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D" index="3"]
+polygon = PackedVector2Array(64, 48, 80, 64, 88, 64, 96, 56, 80, 56, 72, 48)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D" index="4"]
+polygon = PackedVector2Array(72, 56, 64, 64, 80, 80, 88, 80, 96, 72, 80, 72, 72, 64)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D" index="5"]
+polygon = PackedVector2Array(72, 72, 64, 80, 80, 96, 96, 96, 104, 88, 80, 88, 72, 80)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D" index="6"]
+polygon = PackedVector2Array(72, 96, 88, 112, 104, 112, 112, 104, 88, 104, 80, 96)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D" index="7"]
+polygon = PackedVector2Array(64, 32, 80, 16, 104, 16, 96, 24, 80, 24, 72, 32)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D" index="8"]
+polygon = PackedVector2Array(104, 48, 112, 56, 128, 56, 128, 48)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D" index="9"]
+polygon = PackedVector2Array(104, 16, 112, 24, 120, 24, 120, 16, 136, 16, 136, 24, 144, 24, 152, 16, 144, 16, 136, 8, 120, 8, 112, 16)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="StaticBody2D" index="10"]
+polygon = PackedVector2Array(112, 32, 120, 24, 136, 24, 144, 32)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="StaticBody2D" index="11"]
+polygon = PackedVector2Array(136, 48, 136, 56, 144, 56, 152, 48)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="StaticBody2D" index="12"]
+polygon = PackedVector2Array(120, 56, 112, 64, 104, 64, 112, 72, 120, 72)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="StaticBody2D" index="13"]
+polygon = PackedVector2Array(136, 56, 136, 64, 128, 64, 128, 72, 144, 72, 152, 64, 144, 64)
+
+[node name="CollisionPolygon2D15" type="CollisionPolygon2D" parent="StaticBody2D" index="14"]
+polygon = PackedVector2Array(104, 80, 112, 80, 120, 72, 120, 80, 128, 80, 128, 88, 112, 88)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="StaticBody2D" index="15"]
+polygon = PackedVector2Array(136, 72, 136, 88, 144, 88, 152, 80, 144, 80)
+
+[node name="CollisionPolygon2D17" type="CollisionPolygon2D" parent="StaticBody2D" index="16"]
+polygon = PackedVector2Array(104, 96, 112, 96, 120, 88, 120, 104, 112, 104)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="StaticBody2D" index="17"]
+polygon = PackedVector2Array(120, 104, 112, 112, 104, 112, 112, 120, 120, 120)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="StaticBody2D" index="18"]
+polygon = PackedVector2Array(104, 128, 112, 128, 120, 120, 136, 120, 144, 128, 152, 128, 144, 136, 136, 136, 136, 128, 120, 128, 120, 136, 112, 136)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="StaticBody2D" index="19"]
+polygon = PackedVector2Array(128, 96, 136, 96, 136, 88, 144, 96, 160, 96, 152, 104, 128, 104)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="StaticBody2D" index="20"]
+polygon = PackedVector2Array(136, 104, 136, 120, 144, 120, 152, 112, 144, 112)
+
+[node name="CollisionPolygon2D22" type="CollisionPolygon2D" parent="StaticBody2D" index="21"]
+polygon = PackedVector2Array(152, 16, 160, 24, 176, 24, 184, 32, 184, 48, 176, 56, 160, 56, 168, 64, 176, 64, 192, 48, 192, 32, 176, 16)
+
+[node name="CollisionPolygon2D23" type="CollisionPolygon2D" parent="StaticBody2D" index="22"]
+polygon = PackedVector2Array(184, 56, 184, 64, 176, 72, 160, 72, 168, 80, 176, 80, 192, 64)
+
+[node name="CollisionPolygon2D24" type="CollisionPolygon2D" parent="StaticBody2D" index="23"]
+position = Vector2(8, 0)
+polygon = PackedVector2Array(152, 88, 160, 96, 176, 96, 168, 104, 144, 104, 152, 112, 168, 112, 192, 88)
+
+[node name="CollisionPolygon2D25" type="CollisionPolygon2D" parent="StaticBody2D" index="24"]
+polygon = PackedVector2Array(208, 88, 224, 88, 240, 104, 248, 104, 248, 120, 240, 112, 232, 112)
+
+[node name="CollisionPolygon2D26" type="CollisionPolygon2D" parent="StaticBody2D" index="25"]
+polygon = PackedVector2Array(208, 64, 200, 56, 200, 16, 192, 8, 224, 8, 216, 16, 216, 40, 232, 40, 224, 48, 216, 48, 208, 56)
+
+[node name="Interactables" type="Node2D" parent="." index="6"]
+
+[node name="Fan" type="Area2D" parent="Interactables" index="0"]
+process_mode = 3
+position = Vector2(12, 132)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_5tklx")
+interactable_type = 4
+direction = 0
+strength = 4
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="Interactables/Fan" index="0"]
+sprite_frames = SubResource("SpriteFrames_1uhqb")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Fan" index="1"]
+position = Vector2(0, -44)
+shape = SubResource("RectangleShape2D_gqy0e")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactables/Fan" index="2"]
+position = Vector2(0, -8)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan" index="3"]
+position = Vector2(0, -16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan" index="4"]
+position = Vector2(0, -24)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan" index="5"]
+position = Vector2(0, -32)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan" index="6"]
+position = Vector2(0, -40)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan" index="7"]
+position = Vector2(0, -48)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interactables/Fan" index="8"]
+position = Vector2(0, -56)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interactables/Fan" index="9"]
+position = Vector2(0, -64)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Interactables/Fan" index="10"]
+position = Vector2(0, -72)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Interactables/Fan" index="11"]
+position = Vector2(0, -80)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="AnimatedSprite2D11" type="AnimatedSprite2D" parent="Interactables/Fan" index="12"]
+position = Vector2(0, -88)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_glslw")
+autoplay = "default"
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="Interactables/Fan" index="13"]
+stream = ExtResource("6_3q6n2")
+bus = &"SFX"
+
+[node name="Fan2" type="Area2D" parent="Interactables" index="1"]
+process_mode = 3
+position = Vector2(244, 100)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_5tklx")
+interactable_type = 4
+direction = 0
+strength = 5
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="Interactables/Fan2" index="0"]
+sprite_frames = SubResource("SpriteFrames_iturc")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/Fan2" index="1"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_r8rjk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Interactables/Fan2" index="2"]
+position = Vector2(0, -8)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan2" index="3"]
+position = Vector2(0, -16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan2" index="4"]
+position = Vector2(0, -24)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan2" index="5"]
+position = Vector2(0, -32)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan2" index="6"]
+position = Vector2(0, -40)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan2" index="7"]
+position = Vector2(0, -48)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interactables/Fan2" index="8"]
+position = Vector2(0, -56)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interactables/Fan2" index="9"]
+position = Vector2(0, -64)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Interactables/Fan2" index="10"]
+position = Vector2(0, -72)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D10" type="AnimatedSprite2D" parent="Interactables/Fan2" index="11"]
+position = Vector2(0, -80)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_rvmw3")
+autoplay = "default"
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="Interactables/Fan2" index="12"]
+stream = ExtResource("6_3q6n2")
+bus = &"SFX"
+
+[node name="Spike" parent="Interactables" index="2" instance=ExtResource("5_w8gd6")]
+position = Vector2(28, 36)
+rotation = -1.5708
+
+[node name="Spike2" parent="Interactables" index="3" instance=ExtResource("5_w8gd6")]
+position = Vector2(28, 28)
+rotation = -1.5708
+
+[node name="Spike3" parent="Interactables" index="4" instance=ExtResource("5_w8gd6")]
+position = Vector2(28, 20)
+rotation = -1.5708
+
+[node name="Spike4" parent="Interactables" index="5" instance=ExtResource("5_w8gd6")]
+position = Vector2(13, 12)
+rotation = -3.14159
+
+[node name="Spike5" parent="Interactables" index="6" instance=ExtResource("5_w8gd6")]
+position = Vector2(21, 12)
+rotation = -3.14159
+
+[node name="Spike36" parent="Interactables" index="7" instance=ExtResource("5_w8gd6")]
+position = Vector2(237, 12)
+rotation = -3.14159
+
+[node name="Spike37" parent="Interactables" index="8" instance=ExtResource("5_w8gd6")]
+position = Vector2(245, 12)
+rotation = -3.14159
+
+[node name="Spike6" parent="Interactables" index="9" instance=ExtResource("5_w8gd6")]
+position = Vector2(52, 132)
+
+[node name="Spike7" parent="Interactables" index="10" instance=ExtResource("5_w8gd6")]
+position = Vector2(60, 132)
+
+[node name="Spike8" parent="Interactables" index="11" instance=ExtResource("5_w8gd6")]
+position = Vector2(68, 132)
+
+[node name="Spike9" parent="Interactables" index="12" instance=ExtResource("5_w8gd6")]
+position = Vector2(76, 132)
+
+[node name="Spike10" parent="Interactables" index="13" instance=ExtResource("5_w8gd6")]
+position = Vector2(84, 132)
+
+[node name="Spike11" parent="Interactables" index="14" instance=ExtResource("5_w8gd6")]
+position = Vector2(92, 132)
+
+[node name="Spike12" parent="Interactables" index="15" instance=ExtResource("5_w8gd6")]
+position = Vector2(100, 132)
+
+[node name="Spike25" parent="Interactables" index="16" instance=ExtResource("5_w8gd6")]
+position = Vector2(100, 100)
+
+[node name="Spike26" parent="Interactables" index="17" instance=ExtResource("5_w8gd6")]
+position = Vector2(92, 100)
+
+[node name="Spike27" parent="Interactables" index="18" instance=ExtResource("5_w8gd6")]
+position = Vector2(84, 84)
+
+[node name="Spike29" parent="Interactables" index="19" instance=ExtResource("5_w8gd6")]
+position = Vector2(84, 68)
+
+[node name="Spike31" parent="Interactables" index="20" instance=ExtResource("5_w8gd6")]
+position = Vector2(164, 100)
+
+[node name="Spike38" parent="Interactables" index="21" instance=ExtResource("5_w8gd6")]
+position = Vector2(172, 100)
+
+[node name="Spike32" parent="Interactables" index="22" instance=ExtResource("5_w8gd6")]
+position = Vector2(172, 68)
+
+[node name="Spike33" parent="Interactables" index="23" instance=ExtResource("5_w8gd6")]
+position = Vector2(84, 12)
+
+[node name="Spike34" parent="Interactables" index="24" instance=ExtResource("5_w8gd6")]
+position = Vector2(172, 12)
+
+[node name="Spike13" parent="Interactables" index="25" instance=ExtResource("5_w8gd6")]
+position = Vector2(156, 132)
+
+[node name="Spike14" parent="Interactables" index="26" instance=ExtResource("5_w8gd6")]
+position = Vector2(164, 132)
+
+[node name="Spike15" parent="Interactables" index="27" instance=ExtResource("5_w8gd6")]
+position = Vector2(172, 132)
+
+[node name="Spike16" parent="Interactables" index="28" instance=ExtResource("5_w8gd6")]
+position = Vector2(180, 132)
+
+[node name="Spike17" parent="Interactables" index="29" instance=ExtResource("5_w8gd6")]
+position = Vector2(188, 132)
+
+[node name="Spike18" parent="Interactables" index="30" instance=ExtResource("5_w8gd6")]
+position = Vector2(196, 132)
+
+[node name="Spike19" parent="Interactables" index="31" instance=ExtResource("5_w8gd6")]
+position = Vector2(204, 132)
+
+[node name="Spike20" parent="Interactables" index="32" instance=ExtResource("5_w8gd6")]
+position = Vector2(212, 132)
+
+[node name="Spike21" parent="Interactables" index="33" instance=ExtResource("5_w8gd6")]
+position = Vector2(220, 132)
+
+[node name="Spike22" parent="Interactables" index="34" instance=ExtResource("5_w8gd6")]
+position = Vector2(228, 132)
+
+[node name="Spike23" parent="Interactables" index="35" instance=ExtResource("5_w8gd6")]
+position = Vector2(236, 132)
+
+[node name="Spike24" parent="Interactables" index="36" instance=ExtResource("5_w8gd6")]
+position = Vector2(244, 132)
+
+[node name="EndOfLevelFlag" parent="Interactables" index="37" instance=ExtResource("6_2acuh")]
+position = Vector2(128, 116)
+
+[node name="DoorAndSwitch" parent="Interactables" index="38" instance=ExtResource("7_lwrj0")]
+position = Vector2(103, 84)
+direction = 1
+
+[node name="Switch" parent="Interactables/DoorAndSwitch" index="0"]
+position = Vector2(-11, 0)
+
+[node name="Door" parent="Interactables/DoorAndSwitch" index="1"]
+position = Vector2(29, -4)
+rotation = 1.5708
+
+[node name="DoorAndSwitch2" parent="Interactables" index="39" instance=ExtResource("7_lwrj0")]
+position = Vector2(223, 36)
+direction = 1
+
+[node name="Door" parent="Interactables/DoorAndSwitch2" index="1"]
+position = Vector2(-91, 12)
+rotation = 1.5708
+
+[node name="DoorAndSwitch3" parent="Interactables" index="40" instance=ExtResource("7_lwrj0")]
+position = Vector2(152, 96)
+direction = 3
+
+[node name="Switch" parent="Interactables/DoorAndSwitch3" index="0"]
+position = Vector2(-4, -4)
+
+[node name="Door" parent="Interactables/DoorAndSwitch3" index="1"]
+position = Vector2(-28, -32)
+rotation = 1.5708
+
+[editable path="Interactables/DoorAndSwitch"]
+[editable path="Interactables/DoorAndSwitch2"]
+[editable path="Interactables/DoorAndSwitch3"]

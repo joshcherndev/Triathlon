@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://cglstqclnsyqx"]
+
+[ext_resource type="PackedScene" uid="uid://c7byvphcxc26o" path="res://interactables/interactable.tscn" id="1_i5eta"]
+[ext_resource type="Script" path="res://interactables/end_of_level_flag.gd" id="2_l3t80"]
+[ext_resource type="Texture2D" uid="uid://cktlpmchum85k" path="res://assets/flag.png" id="3_ccylv"]
+[ext_resource type="PackedScene" uid="uid://cm1ssslcuithe" path="res://effects/confetti.tscn" id="3_rkg21"]
+[ext_resource type="AudioStream" uid="uid://bbpy23xnt5ot8" path="res://SFX/level_complete.wav" id="5_b22kl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak8mu"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8mwj"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dn83"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rdwe"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26ea8"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mwb7"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxa6u"]
+atlas = ExtResource("3_ccylv")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1pxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak8mu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8mwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dn83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rdwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26ea8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mwb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxa6u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="EndOfLevelFlag" instance=ExtResource("1_i5eta")]
+process_mode = 3
+collision_mask = 2
+script = ExtResource("2_l3t80")
+interactable_type = 2
+
+[node name="AnimatedSprite2d" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_t1pxw")
+autoplay = "default"
+frame_progress = 0.63825
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="Confetti" parent="." index="2" instance=ExtResource("3_rkg21")]
+amount = 48
+
+[node name="SoundEffect" parent="." index="3"]
+stream = ExtResource("5_b22kl")

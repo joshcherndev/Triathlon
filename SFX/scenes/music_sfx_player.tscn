@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq1wgrehn83n5"]
+
+[ext_resource type="Script" path="res://SFX/scripts/Music&SFXPlayer.gd" id="1_wh72s"]
+[ext_resource type="AudioStream" uid="uid://b1sb1r2awfl5l" path="res://SFX/button_pressed.wav" id="2_n633v"]
+[ext_resource type="AudioStream" uid="uid://cs025odd2fcuu" path="res://SFX/final_song.wav" id="4_trdck"]
+
+[node name="MusicSFXPlayer" type="Node"]
+process_mode = 3
+script = ExtResource("1_wh72s")
+
+[node name="Pressed" type="AudioStreamPlayer" parent="."]
+process_priority = 2
+stream = ExtResource("2_n633v")
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_trdck")
+autoplay = true
+bus = &"Music"

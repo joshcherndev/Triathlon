@@ -1,0 +1,494 @@
+[gd_scene load_steps=28 format=3 uid="uid://bsh76vrua58dv"]
+
+[ext_resource type="Script" path="res://UI/scripts/level_select_menu.gd" id="1_hudde"]
+[ext_resource type="Shader" uid="uid://cnavtd7crb1se" path="res://UI/assets/scrolling_background.tres" id="2_pqvdi"]
+[ext_resource type="Texture2D" uid="uid://qycx0cuf3iuk" path="res://UI/assets/background_tile.png" id="3_c5djw"]
+[ext_resource type="Texture2D" uid="uid://42yramufdc68" path="res://UI/assets/square_icon.png" id="4_1ty2o"]
+[ext_resource type="Texture2D" uid="uid://cr8j0ge5pv2xl" path="res://UI/assets/triangle_icon.png" id="5_l8lo2"]
+[ext_resource type="Script" path="res://UI/scripts/level_button.gd" id="5_q0sxp"]
+[ext_resource type="PackedScene" uid="uid://du248iqgy54gb" path="res://levels/level_1.tscn" id="6_bj7e8"]
+[ext_resource type="Texture2D" uid="uid://87egpoy5gicd" path="res://UI/assets/circle_icon.png" id="6_u18it"]
+[ext_resource type="Texture2D" uid="uid://debf4do4n681g" path="res://UI/assets/back_button_normal.png" id="7_tsrv6"]
+[ext_resource type="Texture2D" uid="uid://u65yu4k2l22i" path="res://UI/assets/back_button_hover.png" id="8_mfj02"]
+[ext_resource type="PackedScene" uid="uid://uu2gipa2scf3" path="res://levels/level_2.tscn" id="8_vhqbx"]
+[ext_resource type="PackedScene" uid="uid://c35fcuufpxekq" path="res://levels/level_3.tscn" id="9_7gtyp"]
+[ext_resource type="PackedScene" uid="uid://h66hytsa2pnm" path="res://levels/level_4.tscn" id="9_kr1r1"]
+[ext_resource type="PackedScene" uid="uid://b363xtqyvffy6" path="res://levels/level_5.tscn" id="10_vccn1"]
+[ext_resource type="PackedScene" uid="uid://c28vop4om6lf0" path="res://levels/level_6.tscn" id="12_0sds3"]
+[ext_resource type="PackedScene" uid="uid://jesqb61tgfyg" path="res://levels/level_7.tscn" id="13_ixlwe"]
+[ext_resource type="PackedScene" uid="uid://dehdojq1jbwys" path="res://levels/level_8.tscn" id="14_8abxd"]
+[ext_resource type="PackedScene" uid="uid://bm81c35olfdk1" path="res://levels/level_9.tscn" id="15_icojw"]
+[ext_resource type="PackedScene" uid="uid://dhitdr64b8vhw" path="res://levels/level_10.tscn" id="16_gcenl"]
+[ext_resource type="PackedScene" uid="uid://l6rlup74102o" path="res://levels/level_11.tscn" id="18_7jql3"]
+[ext_resource type="PackedScene" uid="uid://dvkxonhn36rpa" path="res://levels/level_12.tscn" id="19_gqa3j"]
+[ext_resource type="PackedScene" uid="uid://x48x7rmlo2w4" path="res://levels/level_13.tscn" id="20_ay7l6"]
+[ext_resource type="PackedScene" uid="uid://b30fgy1q8yd1a" path="res://levels/level_14.tscn" id="21_0bq6l"]
+[ext_resource type="PackedScene" uid="uid://bgp0j7ed47rym" path="res://levels/level_15.tscn" id="22_vb4tl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_en8oe"]
+shader = ExtResource("2_pqvdi")
+shader_parameter/speed = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_nrhel"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ycbll"]
+font_size = 8
+
+[node name="LevelSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hudde")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_en8oe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_c5djw")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 12
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Select"
+label_settings = SubResource("LabelSettings_nrhel")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_1ty2o")
+stretch_mode = 3
+
+[node name="ButtonTimeLabelContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level1Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonTimeLabelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_top = NodePath("../../VBoxContainer5/Level5Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer6/Level6Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer2/Level2Button")
+text = "1"
+script = ExtResource("5_q0sxp")
+level = ExtResource("6_bj7e8")
+
+[node name="Level1Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/ButtonTimeLabelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level2Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_top = NodePath("../../ButtonTimeLabelContainer/Level1Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer7/Level7Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer3/Level3Button")
+text = "2
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("8_vhqbx")
+
+[node name="Level2Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level3Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_top = NodePath("../../VBoxContainer2/Level2Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer8/Level8Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer4/Level4Button")
+text = "3
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("9_7gtyp")
+
+[node name="Level3Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level4Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_top = NodePath("../../VBoxContainer3/Level3Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer9/Level9Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer5/Level5Button")
+text = "4
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("9_kr1r1")
+
+[node name="Level4Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer4"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Level5Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(18, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_top = NodePath("../../VBoxContainer4/Level4Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer2/VBoxContainer10/Level10Button")
+focus_neighbor_bottom = NodePath("../../ButtonTimeLabelContainer/Level1Button")
+text = "5
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("10_vccn1")
+
+[node name="Level5Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/VBoxContainer5"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_l8lo2")
+stretch_mode = 3
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Level6Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/ButtonTimeLabelContainer/Level1Button")
+focus_neighbor_top = NodePath("../../VBoxContainer10/Level10Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer3/VBoxContainer11/Level11Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer7/Level7Button")
+text = "6"
+script = ExtResource("5_q0sxp")
+level = ExtResource("12_0sds3")
+
+[node name="Level6Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer6"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Level7Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer7"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer2/Level2Button")
+focus_neighbor_top = NodePath("../../VBoxContainer6/Level6Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer3/VBoxContainer12/Level12Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer8/Level8Button")
+text = "7
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("13_ixlwe")
+
+[node name="Level7Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer7"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Level8Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer8"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer3/Level3Button")
+focus_neighbor_top = NodePath("../../VBoxContainer7/Level7Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer3/VBoxContainer13/Level13Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer9/Level9Button")
+text = "8
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("14_8abxd")
+
+[node name="Level8Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer8"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer9" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Level9Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer9"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer4/Level4Button")
+focus_neighbor_top = NodePath("../../VBoxContainer8/Level8Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer3/VBoxContainer14/Level14Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer10/Level10Button")
+text = "9
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("15_icojw")
+
+[node name="Level9Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer9"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer10" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Level10Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer10"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer/VBoxContainer5/Level5Button")
+focus_neighbor_top = NodePath("../../VBoxContainer9/Level9Button")
+focus_neighbor_right = NodePath("../../../VBoxContainer3/VBoxContainer15/Level15Button")
+focus_neighbor_bottom = NodePath("../../VBoxContainer6/Level6Button")
+text = "10
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("16_gcenl")
+
+[node name="Level10Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer10"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_u18it")
+stretch_mode = 3
+
+[node name="VBoxContainer11" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Level11Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer11"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer6/Level6Button")
+focus_neighbor_top = NodePath("../../VBoxContainer15/Level15Button")
+focus_neighbor_right = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer12/Level12Button")
+text = "11
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("18_7jql3")
+
+[node name="Level11Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer11"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer12" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Level12Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer12"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer7/Level7Button")
+focus_neighbor_top = NodePath("../../VBoxContainer11/Level11Button")
+focus_neighbor_right = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer13/Level13Button")
+text = "12
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("19_gqa3j")
+
+[node name="Level12Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer12"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer13" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Level13Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer13"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer8/Level8Button")
+focus_neighbor_top = NodePath("../../VBoxContainer12/Level12Button")
+focus_neighbor_right = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer14/Level14Button")
+text = "13
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("20_ay7l6")
+
+[node name="Level13Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer13"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer14" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Level14Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer14"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer9/Level9Button")
+focus_neighbor_top = NodePath("../../VBoxContainer13/Level13Button")
+focus_neighbor_right = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer15/Level15Button")
+text = "14
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("21_0bq6l")
+
+[node name="Level14Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer14"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="VBoxContainer15" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+
+[node name="Level15Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer15"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../VBoxContainer2/VBoxContainer10/Level10Button")
+focus_neighbor_top = NodePath("../../VBoxContainer14/Level14Button")
+focus_neighbor_right = NodePath("../../../../../MarginContainer/BackButton")
+focus_neighbor_bottom = NodePath("../../VBoxContainer11/Level11Button")
+text = "15
+"
+script = ExtResource("5_q0sxp")
+level = ExtResource("22_vb4tl")
+
+[node name="Level15Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/VBoxContainer15"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0.00"
+label_settings = SubResource("LabelSettings_ycbll")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture_normal = ExtResource("7_tsrv6")
+texture_pressed = ExtResource("7_tsrv6")
+texture_hover = ExtResource("8_mfj02")
+texture_focused = ExtResource("8_mfj02")

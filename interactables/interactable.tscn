@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7byvphcxc26o"]
+
+[ext_resource type="Script" path="res://interactables/interactable.gd" id="1_8yiwe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr5wc"]
+radius = 4.0
+
+[node name="Interactable" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_8yiwe")
+
+[node name="AnimatedSprite2d" type="AnimatedSprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("CircleShape2D_yr5wc")
+
+[node name="SoundEffect" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

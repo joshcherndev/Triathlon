@@ -1,0 +1,546 @@
+[gd_scene load_steps=16 format=3 uid="uid://jesqb61tgfyg"]
+
+[ext_resource type="PackedScene" uid="uid://cqtaxj4d6p3j5" path="res://levels/level.tscn" id="1_3w46g"]
+[ext_resource type="PackedScene" uid="uid://7soc6n6tfkft" path="res://interactables/fan.tscn" id="2_jxtuy"]
+[ext_resource type="PackedScene" uid="uid://dehdojq1jbwys" path="res://levels/level_8.tscn" id="2_nu63q"]
+[ext_resource type="Texture2D" uid="uid://dyl1wp5bvg0wf" path="res://assets/fan_wind.png" id="3_etfuc"]
+[ext_resource type="PackedScene" uid="uid://b4jebucg57tci" path="res://interactables/spike.tscn" id="4_tp5ac"]
+[ext_resource type="PackedScene" uid="uid://cglstqclnsyqx" path="res://interactables/end_of_level_flag.tscn" id="5_gfxwr"]
+[ext_resource type="PackedScene" uid="uid://b0xrq2gaw2bg5" path="res://interactables/door_and_switch.tscn" id="6_sw7xv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqdb7"]
+size = Vector2(8, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4wwb"]
+atlas = ExtResource("3_etfuc")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5bih"]
+atlas = ExtResource("3_etfuc")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3hb1"]
+atlas = ExtResource("3_etfuc")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm1du"]
+atlas = ExtResource("3_etfuc")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu6lm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4wwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5bih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3hb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm1du")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yu5b"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_40cso"]
+size = Vector2(56, 8)
+
+[node name="Level7" instance=ExtResource("1_3w46g")]
+next_level = ExtResource("2_nu63q")
+level_number = "7"
+player_shape = 1
+
+[node name="Player" parent="." index="1"]
+position = Vector2(224, 22)
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(0, 196609, 1, 65536, 196609, 1, 131072, 196609, 1, 196608, 196609, 1, 262144, 196609, 1, 327680, 196609, 1, 393216, 196609, 1, 458752, 196609, 1, 524288, 196609, 1, 589824, 196609, 1, 655360, 196609, 1, 786432, 196609, 1, 851968, 196609, 1, 917504, 196609, 1, 983040, 196609, 1, 1048576, 196609, 1, 1114112, 196609, 1, 1114113, 196609, 1, 1114114, 196609, 1, 1114115, 196609, 1, 1114116, 196609, 1, 1114117, 196609, 1, 1114118, 196609, 1, 1114119, 196609, 1, 1114120, 196609, 1, 1114121, 196609, 1, 1114122, 196609, 1, 1114123, 196609, 1, 1114124, 196609, 1, 1114125, 196609, 1, 1114126, 196609, 1, 1114127, 196609, 1, 1114128, 196609, 1, 1114129, 196609, 1, 1114130, 196609, 1, 1114131, 196609, 1, 1114132, 196609, 1, 1114133, 196609, 1, 1114134, 196609, 1, 1114135, 196609, 1, 1114136, 196609, 1, 1114137, 196609, 1, 1114138, 196609, 1, 1114139, 196609, 1, 1114140, 196609, 1, 1114141, 196609, 1, 1114142, 196609, 1, 1114143, 196609, 1, 1048607, 196609, 1, 983071, 196609, 1, 917535, 196609, 1, 851999, 196609, 1, 786463, 196609, 1, 720927, 196609, 1, 655391, 196609, 1, 589855, 196609, 1, 524319, 196609, 1, 458783, 196609, 1, 393247, 196609, 1, 327711, 196609, 1, 262175, 196609, 1, 196639, 196609, 1, 131103, 196609, 1, 65567, 196609, 1, 31, 196609, 1, 30, 196609, 1, 29, 196609, 1, 28, 196609, 1, 27, 196609, 1, 26, 196609, 1, 25, 196609, 1, 24, 196609, 1, 23, 196609, 1, 22, 196609, 1, 21, 196609, 1, 20, 196609, 1, 19, 196609, 1, 18, 196609, 1, 17, 196609, 1, 16, 196609, 1, 15, 196609, 1, 14, 196609, 1, 13, 196609, 1, 12, 196609, 1, 11, 196609, 1, 10, 196609, 1, 9, 196609, 1, 8, 196609, 1, 7, 196609, 1, 6, 196609, 1, 5, 196609, 1, 4, 196609, 1, 3, 196609, 1, 2, 196609, 1, 1, 196609, 1, 262172, 196609, 1, 262171, 196609, 1, 327706, 196609, 1, 327707, 196609, 1, 327708, 196609, 1, 262173, 589825, 0, 262170, 524289, 0, 327709, 196609, 1, 393242, 196609, 1, 458782, 589825, 1, 458779, 524289, 1, 393243, 196609, 1, 393244, 196609, 1, 458780, 196609, 1, 458781, 196609, 1, 393245, 196609, 1, 393246, 196609, 1, 327710, 589825, 0, 393241, 196609, 1, 327705, 196609, 1, 393240, 524289, 1, 327704, 524289, 0, 720923, 524289, 0, 786459, 196609, 1, 851995, 196609, 1, 983067, 589825, 1, 917531, 196609, 1, 917530, 589825, 0, 917529, 196609, 1, 917528, 196609, 1, 917527, 196609, 1, 1048599, 196609, 1, 917526, 196609, 1, 983061, 196609, 1, 917525, 196609, 1, 1048598, 524289, 1, 917524, 524289, 0, 983060, 524289, 1, 1048591, 196609, 1, 1048590, 196609, 1, 983054, 196609, 1, 983053, 196609, 1, 1048589, 196609, 1, 1048588, 196609, 1, 983055, 589825, 0, 1048592, 589825, 0, 917505, 524289, 1, 851969, 196609, 1, 786433, 196609, 1, 1048580, 196609, 1, 1048582, 589825, 1, 1048581, 196609, 1, 983043, 196609, 1, 917506, 196609, 1, 393217, 196609, 1, 589825, 196609, 1, 720897, 524289, 0, 720896, 196609, 1, 983047, 589825, 1, 1048587, 524289, 0, 983052, 524289, 0, 983062, 589825, 0, 1048600, 589825, 0, 983066, 524289, 1, 655390, 196609, 1, 720926, 196609, 1, 786462, 196609, 1, 851998, 196609, 1, 917534, 196609, 1, 589854, 589825, 0, 1048605, 524289, 0, 983070, 196609, 1, 1048606, 196609, 1, 917533, 524289, 1, 720924, 589825, 1, 327690, 196609, 1, 393226, 196609, 1, 458762, 196609, 1, 524298, 196609, 1, 589834, 196609, 1, 655370, 589825, 1, 327691, 589825, 1, 393230, 524289, 1, 262159, 524289, 0, 393231, 196609, 1, 458767, 524289, 1, 262160, 196609, 1, 458768, 196609, 1, 262161, 196609, 1, 458769, 196609, 1, 327698, 196609, 1, 393234, 196609, 1, 262162, 589825, 0, 458770, 589825, 1, 327699, 589825, 0, 393235, 589825, 1, 589837, 589825, 1, 589836, 196609, 1, 589835, 196609, 1, 196609, 196609, 1, 851970, 589825, 0, 917512, 589825, 1, 983042, 524289, 1, 1048579, 524289, 1, 917511, 196609, 1, 983046, 196609, 1, 983045, 196609, 1, 983044, 196609, 1, 917507, 196609, 1, 65537, 524289, 1, 65538, 196609, 1, 65539, 196609, 1, 65540, 196609, 1, 65541, 196609, 1, 65542, 196609, 1, 65543, 589825, 1, 262152, 524289, 0, 262155, 589825, 0, 524301, 589825, 0, 655368, 524289, 1, 655369, 196609, 1, 524299, 196609, 1, 524300, 196609, 1, 262154, 196609, 1, 262153, 196609, 1, 655361, 524289, 1, 458753, 524289, 1, 262145, 524289, 1, 524289, 524289, 0, 327681, 524289, 0, 131073, 524289, 0, 655362, 589825, 1, 458754, 589825, 1, 262146, 589825, 1, 131074, 589825, 0, 327682, 589825, 0, 524290, 589825, 0, 393232, 393217, 3)
+
+[node name="Label" parent="CanvasLayer/PauseMenu/Background" index="1"]
+offset_left = -24.0
+offset_top = -16.0
+offset_right = 24.0
+offset_bottom = -8.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
+polygon = PackedVector2Array(0, 0, 8, 0, 8, 136, 248, 136, 248, 8, 8, 8, 8, 0, 256, 0, 256, 144, 0, 144)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" index="1"]
+polygon = PackedVector2Array(216, 32, 216, 40, 200, 40, 200, 56, 224, 56, 224, 64, 240, 64, 240, 56, 248, 56, 248, 48, 240, 48, 240, 40, 232, 40, 232, 32)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D" index="2"]
+polygon = PackedVector2Array(240, 80, 248, 80, 248, 136, 240, 136)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D" index="3"]
+polygon = PackedVector2Array(224, 96, 224, 120, 216, 120, 216, 96)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="StaticBody2D" index="4"]
+polygon = PackedVector2Array(208, 112, 208, 120, 176, 120, 176, 128, 168, 128, 168, 115.242, 168, 112, 168, 112)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="StaticBody2D" index="5"]
+polygon = PackedVector2Array(184, 128, 184, 136, 192, 136, 192, 128)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="StaticBody2D" index="6"]
+polygon = PackedVector2Array(104, 120, 104, 128, 96, 128, 96, 136, 128, 136, 128, 128, 120, 128, 120, 120)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="StaticBody2D" index="7"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(64, 120, 56, 120, 56, 128, 64, 128)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="StaticBody2D" index="8"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(56, 128, 56, 136, 24, 136, 24, 128, 16, 128, 16, 120, 32, 120, 32, 123.702, 32, 128)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="StaticBody2D" index="9"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(16, 104, 16, 120, 8, 120, 8, 104)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="StaticBody2D" index="10"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(8, 80, 16, 80, 16, 88, 8, 88)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="StaticBody2D" index="11"]
+position = Vector2(0, -32)
+polygon = PackedVector2Array(8, 80, 16, 80, 16, 88, 8, 88)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="StaticBody2D" index="12"]
+position = Vector2(0, -56)
+polygon = PackedVector2Array(8, 80, 16, 80, 16, 88, 8, 88)
+
+[node name="CollisionPolygon2D14" type="CollisionPolygon2D" parent="StaticBody2D" index="13"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(16, 16, 16, 24, 48, 24, 48, 16)
+
+[node name="CollisionPolygon2D16" type="CollisionPolygon2D" parent="StaticBody2D" index="14"]
+position = Vector2(0, -8)
+polygon = PackedVector2Array(72, 40, 72, 48, 80, 48, 80, 88, 88, 88, 104, 88, 104, 72, 88, 72, 88, 43.375, 88, 40)
+
+[node name="CollisionPolygon2D21" type="CollisionPolygon2D" parent="StaticBody2D" index="15"]
+position = Vector2(-48, 32)
+polygon = PackedVector2Array(120, 48, 120, 56, 128, 56, 128, 48)
+
+[node name="CollisionPolygon2D18" type="CollisionPolygon2D" parent="StaticBody2D" index="16"]
+polygon = PackedVector2Array(128, 56, 128, 64, 144, 64, 144, 56, 136, 56, 128, 48, 120, 48, 120, 56)
+
+[node name="CollisionPolygon2D19" type="CollisionPolygon2D" parent="StaticBody2D" index="17"]
+position = Vector2(0, -24)
+polygon = PackedVector2Array(128, 56, 128, 64, 144, 64, 144, 56)
+
+[node name="CollisionPolygon2D20" type="CollisionPolygon2D" parent="StaticBody2D" index="18"]
+polygon = PackedVector2Array(144, 40, 144, 56, 152, 56, 152, 40)
+
+[node name="Interactables" type="Node2D" parent="." index="6"]
+
+[node name="Spike" parent="Interactables" index="0" instance=ExtResource("4_tp5ac")]
+position = Vector2(172, 132)
+
+[node name="Spike2" parent="Interactables" index="1" instance=ExtResource("4_tp5ac")]
+position = Vector2(164, 132)
+
+[node name="Spike3" parent="Interactables" index="2" instance=ExtResource("4_tp5ac")]
+position = Vector2(156, 132)
+
+[node name="Spike6" parent="Interactables" index="3" instance=ExtResource("4_tp5ac")]
+position = Vector2(84, 132)
+
+[node name="Spike7" parent="Interactables" index="4" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 132)
+
+[node name="Spike8" parent="Interactables" index="5" instance=ExtResource("4_tp5ac")]
+position = Vector2(68, 132)
+
+[node name="Spike16" parent="Interactables" index="6" instance=ExtResource("4_tp5ac")]
+position = Vector2(60, 132)
+
+[node name="Spike4" parent="Interactables" index="7" instance=ExtResource("4_tp5ac")]
+position = Vector2(140, 132)
+
+[node name="Spike5" parent="Interactables" index="8" instance=ExtResource("4_tp5ac")]
+position = Vector2(148, 132)
+
+[node name="Spike9" parent="Interactables" index="9" instance=ExtResource("4_tp5ac")]
+position = Vector2(92, 60)
+
+[node name="Spike10" parent="Interactables" index="10" instance=ExtResource("4_tp5ac")]
+position = Vector2(100, 60)
+
+[node name="Spike11" parent="Interactables" index="11" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 44)
+rotation = -1.5708
+
+[node name="Spike12" parent="Interactables" index="12" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 52)
+rotation = -1.5708
+
+[node name="Spike13" parent="Interactables" index="13" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 60)
+rotation = -1.5708
+
+[node name="Spike14" parent="Interactables" index="14" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 68)
+rotation = -1.5708
+
+[node name="Spike15" parent="Interactables" index="15" instance=ExtResource("4_tp5ac")]
+position = Vector2(76, 76)
+rotation = -1.5708
+
+[node name="Fan" parent="Interactables" index="16" instance=ExtResource("2_jxtuy")]
+position = Vector2(36, 116)
+direction = 0
+strength = 9
+
+[node name="CollisionShape2D" parent="Interactables/Fan" index="1"]
+visible = true
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_lqdb7")
+
+[node name="AnimatedSprite2D" parent="Interactables/Fan" index="2"]
+position = Vector2(0, -8)
+rotation = 4.71239
+frame_progress = 0.59027
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan" index="3"]
+position = Vector2(0, -16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan" index="4"]
+position = Vector2(0, -24)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan" index="5"]
+position = Vector2(0, -32)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan" index="6"]
+position = Vector2(0, -48)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan" index="7"]
+position = Vector2(0, -56)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interactables/Fan" index="8"]
+position = Vector2(0, -72)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interactables/Fan" index="9"]
+position = Vector2(0, -80)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Interactables/Fan" index="10"]
+position = Vector2(0, -96)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="Fan2" parent="Interactables" index="17" instance=ExtResource("2_jxtuy")]
+position = Vector2(44, 116)
+direction = 0
+strength = 9
+
+[node name="CollisionShape2D" parent="Interactables/Fan2" index="1"]
+visible = true
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_lqdb7")
+
+[node name="AnimatedSprite2D" parent="Interactables/Fan2" index="2"]
+position = Vector2(0, -8)
+rotation = 4.71239
+frame_progress = 0.155101
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan2" index="3"]
+position = Vector2(0, -16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan2" index="4"]
+position = Vector2(0, -24)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan2" index="5"]
+position = Vector2(0, -32)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan2" index="6"]
+position = Vector2(0, -48)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan2" index="7"]
+position = Vector2(0, -56)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interactables/Fan2" index="8"]
+position = Vector2(0, -72)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interactables/Fan2" index="9"]
+position = Vector2(0, -80)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Interactables/Fan2" index="10"]
+position = Vector2(0, -96)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="Fan3" parent="Interactables" index="18" instance=ExtResource("2_jxtuy")]
+position = Vector2(52, 116)
+direction = 0
+strength = 9
+
+[node name="CollisionShape2D" parent="Interactables/Fan3" index="1"]
+visible = true
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_lqdb7")
+
+[node name="AnimatedSprite2D" parent="Interactables/Fan3" index="2"]
+position = Vector2(0, -8)
+rotation = 4.71239
+frame_progress = 0.155101
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan3" index="3"]
+position = Vector2(0, -16)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan3" index="4"]
+position = Vector2(0, -24)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan3" index="5"]
+position = Vector2(0, -32)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan3" index="6"]
+position = Vector2(0, -48)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan3" index="7"]
+position = Vector2(0, -56)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D7" type="AnimatedSprite2D" parent="Interactables/Fan3" index="8"]
+position = Vector2(0, -72)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D8" type="AnimatedSprite2D" parent="Interactables/Fan3" index="9"]
+position = Vector2(0, -80)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="AnimatedSprite2D9" type="AnimatedSprite2D" parent="Interactables/Fan3" index="10"]
+position = Vector2(0, -96)
+rotation = 4.71239
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.178711
+
+[node name="Fan4" parent="Interactables" index="19" instance=ExtResource("2_jxtuy")]
+position = Vector2(20, 76)
+strength = 12
+
+[node name="CollisionShape2D" parent="Interactables/Fan4" index="1"]
+visible = true
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_7yu5b")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan4" index="3"]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan4" index="4"]
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan4" index="5"]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan4" index="6"]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan4" index="7"]
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="Fan5" parent="Interactables" index="20" instance=ExtResource("2_jxtuy")]
+position = Vector2(20, 52)
+strength = 12
+
+[node name="CollisionShape2D" parent="Interactables/Fan5" index="1"]
+visible = true
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_7yu5b")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan5" index="3"]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan5" index="4"]
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan5" index="5"]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan5" index="6"]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan5" index="7"]
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="Fan6" parent="Interactables" index="21" instance=ExtResource("2_jxtuy")]
+position = Vector2(20, 28)
+strength = 12
+
+[node name="CollisionShape2D" parent="Interactables/Fan6" index="1"]
+visible = true
+position = Vector2(24, 0)
+shape = SubResource("RectangleShape2D_40cso")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Interactables/Fan6" index="3"]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Interactables/Fan6" index="4"]
+position = Vector2(24, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Interactables/Fan6" index="5"]
+position = Vector2(32, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Interactables/Fan6" index="6"]
+position = Vector2(40, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="AnimatedSprite2D6" type="AnimatedSprite2D" parent="Interactables/Fan6" index="7"]
+position = Vector2(48, 0)
+sprite_frames = SubResource("SpriteFrames_hu6lm")
+autoplay = "default"
+frame_progress = 0.316926
+
+[node name="EndOfLevelFlag" parent="Interactables" index="22" instance=ExtResource("5_gfxwr")]
+position = Vector2(140, 52)
+
+[node name="DoorAndSwitch" parent="Interactables" index="23" instance=ExtResource("6_sw7xv")]
+position = Vector2(116, 44)
+direction = 2
+
+[node name="Switch" parent="Interactables/DoorAndSwitch" index="0"]
+position = Vector2(72, 80)
+
+[node name="Door" parent="Interactables/DoorAndSwitch" index="1"]
+position = Vector2(8, 0)
+
+[editable path="Interactables/Fan"]
+[editable path="Interactables/Fan2"]
+[editable path="Interactables/Fan3"]
+[editable path="Interactables/Fan4"]
+[editable path="Interactables/Fan5"]
+[editable path="Interactables/Fan6"]
+[editable path="Interactables/DoorAndSwitch"]

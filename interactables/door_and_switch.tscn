@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://b0xrq2gaw2bg5"]
+
+[ext_resource type="Texture2D" uid="uid://vnnqhmbd6ab6" path="res://tile_map.png" id="1_35xed"]
+[ext_resource type="Script" path="res://interactables/door_and_switch.gd" id="1_ug2du"]
+[ext_resource type="AudioStream" uid="uid://dqqol8fftvf8m" path="res://SFX/switch_click.wav" id="3_4bguj"]
+[ext_resource type="AudioStream" uid="uid://bfxye0savuu85" path="res://SFX/door_open.wav" id="4_bl0gk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubg1x"]
+atlas = ExtResource("1_35xed")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jip3"]
+atlas = ExtResource("1_35xed")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_swsok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubg1x")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jip3")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4nsc"]
+size = Vector2(6, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvmkb"]
+atlas = ExtResource("1_35xed")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teyvn"]
+atlas = ExtResource("1_35xed")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x3wp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvmkb")
+}],
+"loop": true,
+"name": &"closed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teyvn")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnsab"]
+size = Vector2(4, 8)
+
+[node name="DoorAndSwitch" type="Node2D"]
+script = ExtResource("1_ug2du")
+
+[node name="Switch" type="Area2D" parent="."]
+position = Vector2(-3, 0)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="SwitchSprite" type="AnimatedSprite2D" parent="Switch"]
+sprite_frames = SubResource("SpriteFrames_swsok")
+animation = &"down"
+autoplay = "up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Switch"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_a4nsc")
+
+[node name="Door" type="StaticBody2D" parent="."]
+position = Vector2(4, 0)
+collision_mask = 0
+
+[node name="DoorSprite" type="AnimatedSprite2D" parent="Door"]
+sprite_frames = SubResource("SpriteFrames_x3wp3")
+animation = &"closed"
+autoplay = "closed"
+
+[node name="DoorCollisionShape" type="CollisionShape2D" parent="Door"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_pnsab")
+
+[node name="SwitchSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4bguj")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bl0gk")
+volume_db = 10.0
+bus = &"SFX"

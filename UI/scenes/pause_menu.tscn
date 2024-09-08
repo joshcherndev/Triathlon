@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://cxb00fwofrkgu"]
+
+[ext_resource type="Texture2D" uid="uid://c6jxfxd4xdo6v" path="res://UI/assets/replay_button_normal.png" id="1_tb5ae"]
+[ext_resource type="Texture2D" uid="uid://b1gt1vekwdbq2" path="res://UI/assets/replay_button_hover.png" id="2_a6kde"]
+[ext_resource type="Texture2D" uid="uid://g71t4w6mwq7p" path="res://UI/assets/menu_button_normal.png" id="3_i8klr"]
+[ext_resource type="Texture2D" uid="uid://copy8gwbhk6bn" path="res://UI/assets/menu_button_hover.png" id="4_xmq6m"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk8y3"]
+font_size = 8
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="Animation" id="Animation_cuoi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(104, 56)]
+}
+
+[sub_resource type="Animation" id="Animation_gfecs"]
+resource_name = "side_to_side"
+length = 2.0
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 1, 1.025),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(104, 56), Vector2(106, 56), Vector2(104, 56), Vector2(102, 56)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h2g1j"]
+_data = {
+"RESET": SubResource("Animation_cuoi4"),
+"side_to_side": SubResource("Animation_gfecs")
+}
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.227451, 0.227451, 0.227451, 0.737255)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 88
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 88
+theme_override_constants/margin_bottom = 48
+
+[node name="ColorRect" type="ColorRect" parent="Background/MarginContainer"]
+layout_mode = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="PauseReplayButton" type="TextureButton" parent="Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("1_tb5ae")
+texture_pressed = ExtResource("1_tb5ae")
+texture_hover = ExtResource("2_a6kde")
+texture_focused = ExtResource("2_a6kde")
+
+[node name="PauseMenuButton" type="TextureButton" parent="Background/MarginContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_i8klr")
+texture_pressed = ExtResource("3_i8klr")
+texture_hover = ExtResource("4_xmq6m")
+texture_focused = ExtResource("4_xmq6m")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 104.0
+offset_top = 56.0
+offset_right = 152.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_vk8y3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h2g1j")
+}
+autoplay = "side_to_side"

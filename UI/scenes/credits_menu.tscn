@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://i3iyv8vufbut"]
+
+[ext_resource type="Shader" uid="uid://cnavtd7crb1se" path="res://UI/assets/scrolling_background.tres" id="1_6v8un"]
+[ext_resource type="Script" path="res://UI/scenes/credits_menu.gd" id="1_x7s5a"]
+[ext_resource type="Texture2D" uid="uid://qycx0cuf3iuk" path="res://UI/assets/background_tile.png" id="2_ho1al"]
+[ext_resource type="Texture2D" uid="uid://debf4do4n681g" path="res://UI/assets/back_button_normal.png" id="3_vfxyb"]
+[ext_resource type="Texture2D" uid="uid://u65yu4k2l22i" path="res://UI/assets/back_button_hover.png" id="4_d5k0g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nhqf1"]
+shader = ExtResource("1_6v8un")
+shader_parameter/speed = 0.05
+
+[sub_resource type="LabelSettings" id="LabelSettings_8a7da"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_a6kio"]
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_ydwyw"]
+font_size = 8
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x7s5a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_nhqf1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ho1al")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.380392, 0.380392, 0.380392, 1)
+
+[node name="HBoxContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="BackButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+texture_normal = ExtResource("3_vfxyb")
+texture_pressed = ExtResource("3_vfxyb")
+texture_hover = ExtResource("4_d5k0g")
+texture_focused = ExtResource("4_d5k0g")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Credits:
+"
+label_settings = SubResource("LabelSettings_8a7da")
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.0
+offset_top = -24.0
+offset_right = 104.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(104, 0)
+text = "created by josh chernetsky"
+label_settings = SubResource("LabelSettings_a6kio")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -9.5
+offset_right = 208.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(208, 0)
+text = "font by Cody \"CodeMan38\" Boisclair, OFL 1.1, 
+https://www.dafont.com/press-start-2p.font"
+label_settings = SubResource("LabelSettings_ydwyw")
+horizontal_alignment = 1
